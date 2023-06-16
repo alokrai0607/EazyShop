@@ -1,10 +1,10 @@
-package com.EazyBuy.Service;
+package com.EazyBuy.service;
 
 import java.util.List;
 
-import com.masai.Exception.CartException;
-import com.masai.model.Cart;
-import com.masai.model.Product;
+import com.EazyBuy.exception.CartException;
+import com.EazyBuy.model.Cart;
+import com.EazyBuy.model.Product;
 
 
 public interface CartService {

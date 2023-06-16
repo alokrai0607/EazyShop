@@ -1,4 +1,4 @@
-package com.EazyBuy.Service;
+package com.EazyBuy.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exception.CustomerException;
-import com.masai.Repository.AddressRepo;
-import com.masai.model.Address;
+import com.EazyBuy.exception.CustomerException;
+import com.EazyBuy.model.Address;
+import com.EazyBuy.repository.AddressRepo;
 
 @Service
 public class AddressServiceImpl implements AddressService {
