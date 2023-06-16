@@ -1,9 +1,9 @@
-package com.EazyBuy.Service;
+package com.EazyBuy.service;
 
 import java.util.List;
 
+import com.EazyBuy.exception.CustomerException;
 import com.EazyBuy.model.Address;
-import com.masai.Exception.CustomerException;
 
 
 /**
