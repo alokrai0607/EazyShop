@@ -1,4 +1,4 @@
-package com.EazyBuy.Service;
+package com.EazyBuy.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,15 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exception.CartException;
-import com.masai.Exception.UserException;
-import com.masai.Repository.CartRepository;
-import com.masai.Repository.CustomerRepo;
-import com.masai.Repository.ProductRepository;
-import com.masai.Repository.UserSession;
-import com.masai.model.Cart;
-import com.masai.model.CurrentUserSession;
-import com.masai.model.Product;
+import com.EazyBuy.exception.CartException;
+import com.EazyBuy.exception.UserException;
+import com.EazyBuy.model.Cart;
+import com.EazyBuy.model.CurrentUserSession;
+import com.EazyBuy.model.Product;
+import com.EazyBuy.repository.CartRepository;
+import com.EazyBuy.repository.CustomerRepo;
+import com.EazyBuy.repository.ProductRepository;
+import com.EazyBuy.repository.UserSession;
 
 @Service
 public class CartServiceImp implements CartService {

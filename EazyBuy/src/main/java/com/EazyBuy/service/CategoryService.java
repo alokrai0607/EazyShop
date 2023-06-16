@@ -1,10 +1,9 @@
-package com.EazyBuy.Service;
+package com.EazyBuy.service;
 
 import java.util.List;
 
-import com.masai.model.Category;
-import com.masai.model.CategoryEnum;
-import com.masai.model.Product;
+import com.EazyBuy.model.Category;
+import com.EazyBuy.model.Product;
 
 public interface CategoryService {
 

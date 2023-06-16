@@ -1,12 +1,13 @@
-package com.EazyBuy.Service;
+package com.EazyBuy.service;
 
-import com.masai.Repository.ProductRepository;
-import com.masai.model.Product;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.EazyBuy.model.Product;
+import com.EazyBuy.repository.ProductRepository;
 
 
 @Service
