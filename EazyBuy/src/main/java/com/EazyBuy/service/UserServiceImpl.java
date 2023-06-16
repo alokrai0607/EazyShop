@@ -16,8 +16,6 @@ import com.EazyBuy.repository.AdminRepository;
 import com.EazyBuy.repository.CustomerRepo;
 import com.EazyBuy.repository.UserSession;
 
-import net.bytebuddy.utility.RandomString;
-
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
@@ -41,7 +39,7 @@ public class UserServiceImpl implements UserService {
 			if (optional.isPresent())
 				throw new UserException(" Customer is already Logged In");
 			if (customer.getPassword().equalsIgnoreCase(user.getPassword())) {
-				String key = RandomString.make(6);
+				String key = "Hello";
 
 				CurrentUserSession currentUserSession = new CurrentUserSession(customer.getCustomerId(), key,
 						LocalDateTime.now());
@@ -64,7 +62,7 @@ public class UserServiceImpl implements UserService {
 			}
 
 			if (admin.getPassword().equalsIgnoreCase(user.getPassword())) {
-				String key = RandomString.make(6);
+				String key = "Hello";
 
 				CurrentUserSession currentUserSession = new CurrentUserSession(admin.getId(), key, LocalDateTime.now());
 
