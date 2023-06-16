@@ -1,4 +1,4 @@
-package com.EazyBuy.Exception;
+package com.EazyBuy.exception;
 
 public class CustomerException extends Exception {
 
