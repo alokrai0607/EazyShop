@@ -1,4 +1,4 @@
-package com.masai.model;
+package com.EazyBuy.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

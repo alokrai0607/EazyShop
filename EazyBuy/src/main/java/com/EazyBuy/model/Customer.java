@@ -1,4 +1,4 @@
-package com.masai.model;
+package com.EazyBuy.model;
 
 import java.util.List;
 
