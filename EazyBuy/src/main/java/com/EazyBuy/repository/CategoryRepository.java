@@ -11,7 +11,7 @@ import com.EazyBuy.model.CategoryEnum;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer>{
 
-	public List<Category> findByCatName(CategoryEnum catName);
+	public Category findByCatName(CategoryEnum catName);
 
 
 	

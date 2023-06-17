@@ -39,17 +39,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 		
-		
 		Customer savedCustomer = customerRepo.save(customer);
 
 		Cart cart = new Cart();
 		cart.setCartId(savedCustomer.getCustomerId());
 		cart.setCustomer(savedCustomer);
-
 		cart.setProduct(null);
-
 		cartRepo.save(cart);
-
 		savedCustomer.setCart(cart);
 
 		return customerRepo.save(savedCustomer);

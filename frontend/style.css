@@ -1,0 +1,126 @@
+*{
+  margin: 0;padding: 0;box-sizing: border-box;
+}
+/* Navbar */
+nav {
+  background-color: #333;
+  color: #fff;
+  height: 60px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* Sign In Form */
+#signin-form {
+  margin-top: 50px;
+}
+
+#signin-form .container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#signin-form h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#signin-form .form-group {
+  margin-bottom: 20px;
+}
+
+#signin-form label {
+  font-weight: bold;
+}
+
+#signin-form input[type="text"],
+#signin-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#signin-form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+#product-list{
+  display: flex;
+  grid-template-columns: repeat(4, max-content);
+  gap: 10px;
+}
+.product-item {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.product-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.product-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-price {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.product-description {
+  font-size: 14px;
+  line-height: 1.4;
+}

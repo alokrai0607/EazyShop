@@ -37,35 +37,33 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer customerId;
 	@Size(min = 3, max = 15)
-	@NotBlank
+
 	private String firstName;
 	@Size(min = 3, max = 15)
-	@NotBlank
+
 	private String lastName;
 	
 	
 	private String image;
 
-	@NotNull
-	@Pattern(regexp = "[6789][0-9]{9}")
 	@NotBlank
 	@Column(unique = true,nullable = false)
 	private String mobileNumber;
 
-	@NotBlank
+
 	@Email
 	@Column(unique = true,nullable = false)
 	private String email;
 
-	@NotNull
-	@NotBlank
+
 	@Size(min = 5, max = 10, message = "password length should be between 5 to 10")
 	private String password;
 
-	@NotNull
+
 	@JsonIgnore
 	private boolean isActive = true;
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "aid")
 	private Address address;
@@ -77,7 +75,7 @@ public class Customer {
 
 	
 
-//	@JsonIgnore
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<Orders> orders;
 

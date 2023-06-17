@@ -27,4 +27,6 @@ public interface AddressService {
      * @throws CustomerException if the address with the specified ID is not found.
      */
 	public Address getAddress(Integer aid) throws CustomerException;
+
+	Address createAddress(Address address, Integer id) throws CustomerException;
 }
