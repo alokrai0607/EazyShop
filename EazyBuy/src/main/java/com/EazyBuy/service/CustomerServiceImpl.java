@@ -57,14 +57,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer deleteCustomer(Integer id, String key) {
+	public Customer deleteCustomer(Integer id) {
 		
-		CurrentUserSession user = userRepo.findByUuid(key);
 		
-		if(user==null) {
-			throw new UserException("Please Login first");
-		}
-
 		Optional<Customer> customer2 = customerRepo.findById(id);
 
 		if (customer2.isEmpty())
@@ -75,13 +70,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer updateCustomer(Customer customer, String key) {
+	public Customer updateCustomer(Customer customer) {
 
-		CurrentUserSession user = userRepo.findByUuid(key);
 		
-		if(user==null) {
-			throw new UserException("Please Login first");
-		}
 		Optional<Customer> customer2 = customerRepo.findById(customer.getCustomerId());
 
 		if (customer2.isEmpty())

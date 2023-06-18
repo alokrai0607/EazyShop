@@ -49,23 +49,23 @@ public class AdminController {
 
     
     @PostMapping("admin/products")
-	public ResponseEntity<Product> addProduct(@RequestBody Product product ,@RequestParam("sessionKey") String key){
+	public ResponseEntity<Product> addProduct(@RequestBody Product product){
 		
-		return new ResponseEntity<>(proService.addProduct(product,key),HttpStatus.OK);
+		return new ResponseEntity<>(proService.addProduct(product),HttpStatus.OK);
 	}
     
     
     
     @PutMapping("admin/products")
-	public ResponseEntity<Product> updateProduct(@RequestBody Product product,@RequestParam("sessionKey") String key){
+	public ResponseEntity<Product> updateProduct(@RequestBody Product product){
 		
-		return new ResponseEntity<>(proService.updateProduct(product,key),HttpStatus.OK);
+		return new ResponseEntity<>(proService.updateProduct(product),HttpStatus.OK);
 	}
     
     @DeleteMapping("admin/products/{id}")
-	public ResponseEntity<Product> deleteProductById(@PathVariable("id") Integer id, @RequestParam("sessionKey") String key){
+	public ResponseEntity<Product> deleteProductById(@PathVariable("id") Integer id){
 		
-		return new ResponseEntity<>(proService.deleteProductById(id ,key),HttpStatus.OK);
+		return new ResponseEntity<>(proService.deleteProductById(id ),HttpStatus.OK);
 	}
     
     @GetMapping("admin/category")
@@ -86,14 +86,14 @@ public class AdminController {
 	}
     
     @PostMapping("admin/category")
-	public ResponseEntity<Category> addCategory(@RequestBody Category category, @RequestParam("sessionKey") String key){
+	public ResponseEntity<Category> addCategory(@RequestBody Category category){
 		
-		return new ResponseEntity<>(proService.addCategory(category ,key),HttpStatus.OK );
+		return new ResponseEntity<>(proService.addCategory(category ),HttpStatus.OK );
 	}
 	
 	@DeleteMapping("admin/category/{id}")
-	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id, @RequestParam("sessionKey") String key){
+	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id){
 		
-		return new ResponseEntity<>(proService.deleteCategory(id,key),HttpStatus.OK);
+		return new ResponseEntity<>(proService.deleteCategory(id),HttpStatus.OK);
 	}
 }

@@ -43,16 +43,11 @@ public class ProductServiceImpl implements ProductService{
 	
 
 	@Override
-	public Product addProduct(Product product, String key) throws ProductException {
+	public Product addProduct(Product product) throws ProductException {
 		
 		
 
-		CurrentUserSession user = userRepo.findByUuid(key);
-		
-		if(user==null) {
-			throw new UserException("Please Login first");
-		}
-		
+	
 		
 		Optional<Product> prod = proRepo.findById(product.getProductId());
 		
@@ -69,16 +64,9 @@ public class ProductServiceImpl implements ProductService{
 	
 
 	@Override
-	public Product updateProduct(Product product, String key) throws ProductException {
+	public Product updateProduct(Product product) throws ProductException {
 		
-		
-		
-     CurrentUserSession user = userRepo.findByUuid(key);
-		
-		if(user==null) {
-			throw new UserException("Please Login first");
-		}
-		
+	
 		
 		
 		Optional<Product> prod = proRepo.findById(product.getProductId());
@@ -154,12 +142,8 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	@Override
-	public Product deleteProductById(Integer id, String key) throws ProductException, UserException {
+	public Product deleteProductById(Integer id) throws ProductException, UserException {
 	    // Check if user is authenticated
-	    CurrentUserSession user = userRepo.findByUuid(key);
-	    if (user == null) {
-	        throw new UserException("Please log in first.");
-	    }
 	    
 	    // Check if product exists
 	    Optional<Product> optionalProduct = proRepo.findById(id);
@@ -196,14 +180,8 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	@Override
-	public Category addCategory(Category category, String Key) throws ProductException {
+	public Category addCategory(Category category) throws ProductException {
 		
-		  CurrentUserSession user = userRepo.findByUuid(Key);
-			
-			if(user==null) {
-				throw new UserException("Please Login first");
-			}
-			
 		
 		
 		Optional<Category> cat = catRepo.findById(category.getCatId());
@@ -220,15 +198,9 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	@Override
-	public Category deleteCategory(Integer catId , String Key) throws ProductException {
+	public Category deleteCategory(Integer catId) throws ProductException {
 		
-		
-		  CurrentUserSession user = userRepo.findByUuid(Key);
-			
-			if(user==null) {
-				throw new UserException("Please Login first");
-			}
-			
+	
 			
 		
 		Optional<Category> cat = catRepo.findById(catId);

@@ -131,13 +131,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Orders updateOrder(Orders order,String key) throws OrderException {
-		
-		CurrentUserSession user = userRepo.findByUuid(key);
-		
-		if(user==null) {
-			throw new UserException("Please Login first");
-		}
+	public Orders updateOrder(Orders order) throws OrderException {
 		
 		
 		Optional<Orders> or = orderRepository.findById(order.getOrderId());
@@ -154,12 +148,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public String removeOrder(Integer orderId,String key) throws OrderException {
-
-		CurrentUserSession user = userRepo.findByUuid(key);
-	    if (user == null) {
-	        throw new UserException("Please Login first");
-	    }
+	public String removeOrder(Integer orderId) throws OrderException {
 
 	    
 	        Optional<Orders> order = orderRepository.findById(orderId);

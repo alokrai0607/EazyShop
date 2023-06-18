@@ -39,35 +39,35 @@ public class ProductController {
 	}
 
 	@PostMapping("/products")
-	public ResponseEntity<Product> addProduct(@RequestBody Product product, @RequestParam("sessionKey") String key) {
+	public ResponseEntity<Product> addProduct(@RequestBody Product product) {
 
-		return new ResponseEntity<>(ps.addProduct(product, key), HttpStatus.OK);
+		return new ResponseEntity<>(ps.addProduct(product), HttpStatus.OK);
 	}
 
 	@PutMapping("/products")
-	public ResponseEntity<Product> updateProduct(@RequestBody Product product, @RequestParam("sessionKey") String key) {
+	public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
 
-		return new ResponseEntity<>(ps.updateProduct(product, key), HttpStatus.OK);
+		return new ResponseEntity<>(ps.updateProduct(product), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/products/{id}")
-	public ResponseEntity<Product> deleteProductById(@PathVariable("id") Integer id,
-			@RequestParam("sessionKey") String key) {
+	public ResponseEntity<Product> deleteProductById(@PathVariable("id") Integer id
+			) {
 
-		return new ResponseEntity<>(ps.deleteProductById(id, key), HttpStatus.OK);
+		return new ResponseEntity<>(ps.deleteProductById(id), HttpStatus.OK);
 	}
 
 	@PostMapping("/category")
-	public ResponseEntity<Category> addCategory(@RequestBody Category category,
-			@RequestParam("sessionKey") String key) {
+	public ResponseEntity<Category> addCategory(@RequestBody Category category
+			) {
 
-		return new ResponseEntity<>(ps.addCategory(category, key), HttpStatus.OK);
+		return new ResponseEntity<>(ps.addCategory(category), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/category/{id}")
-	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id,
-			@RequestParam("sessionKey") String key) {
+	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id
+		) {
 
-		return new ResponseEntity<>(ps.deleteCategory(id, key), HttpStatus.OK);
+		return new ResponseEntity<>(ps.deleteCategory(id), HttpStatus.OK);
 	}
 }

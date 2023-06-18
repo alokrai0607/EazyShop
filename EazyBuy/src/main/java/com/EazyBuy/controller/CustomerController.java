@@ -47,15 +47,15 @@ public class CustomerController {
 	}
 
 	@DeleteMapping("/customerDelete")
-	public ResponseEntity<Customer> deleteCustmerHandller(@Valid @RequestBody Customer customer,@RequestParam("Session Key") String key) {
-		Customer customer2 = customerService.deleteCustomer(customer.getCustomerId(),key);
+	public ResponseEntity<Customer> deleteCustmerHandller(@Valid @RequestBody Customer customer) {
+		Customer customer2 = customerService.deleteCustomer(customer.getCustomerId());
 		return new ResponseEntity<>(customer2, HttpStatus.OK);
 	}
 
 	
 	@PutMapping("/customerUpdate")
-	public ResponseEntity<Customer> updateCustmerHandller(@Valid @RequestBody Customer customer,@RequestParam("Session Key") String key) {
-		Customer customer2 = customerService.updateCustomer(customer,key);
+	public ResponseEntity<Customer> updateCustmerHandller(@Valid @RequestBody Customer customer) {
+		Customer customer2 = customerService.updateCustomer(customer);
 		return new ResponseEntity<>(customer2, HttpStatus.OK);
 	}
 	

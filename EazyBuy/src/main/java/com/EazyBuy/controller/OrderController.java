@@ -38,20 +38,20 @@ public class OrderController {
 
 	}
 
-	@PutMapping("/orders/{key}")
-	public ResponseEntity<Orders> updateOrderController(@RequestBody Orders order, @PathVariable String key)
+	@PutMapping("/orders/")
+	public ResponseEntity<Orders> updateOrderController(@RequestBody Orders order)
 			throws OrderException {
 
-		Orders updateOr = orService.updateOrder(order, key);
+		Orders updateOr = orService.updateOrder(order);
 		return new ResponseEntity<Orders>(updateOr, HttpStatus.OK);
 
 	}
 
-	@DeleteMapping("/orders/{orderId}/{key}")
-	public ResponseEntity<String> deleteOrderController(@PathVariable("orderId") Integer orderId,
-			@PathVariable String key) throws OrderException {
+	@DeleteMapping("/orders/{orderId}")
+	public ResponseEntity<String> deleteOrderController(@PathVariable("orderId") Integer orderId
+			) throws OrderException {
 
-		String deleteOr = orService.removeOrder(orderId, key);
+		String deleteOr = orService.removeOrder(orderId);
 
 		return new ResponseEntity<String>(deleteOr, HttpStatus.OK);
 	}
