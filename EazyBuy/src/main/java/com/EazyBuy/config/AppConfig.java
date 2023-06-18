@@ -58,8 +58,8 @@ public class AppConfig {
 				.requestMatchers(HttpMethod.POST,"/customerSave","/products").permitAll()
 //				.requestMatchers(HttpMethod.GET,"/signIn").permitAll()
 				.requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
-				.requestMatchers(HttpMethod.GET, "/products").permitAll()
-				.requestMatchers(HttpMethod.GET, "/customers").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.GET, "/products" ,"/product").permitAll()
+				.requestMatchers(HttpMethod.GET, "/customers", "/productByName").hasRole("ADMIN")
 				.requestMatchers(HttpMethod.GET, "/customerGet/**").hasAnyRole("ADMIN","USER")
 				.anyRequest().authenticated();
 			

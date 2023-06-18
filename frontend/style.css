@@ -80,42 +80,6 @@ nav {
   border-radius: 4px;
 }
 
-/* Featured Products */
-.featured-products {
-  padding: 60px 0;
-}
-
-.featured-products h2 {
-  font-size: 28px;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.product-item {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.product-item img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  margin-bottom: 20px;
-  border-radius: 4px;
-}
-
-.product-item h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.product-item p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
 
 /* Subscribe Section */
 .subscribe-section {
@@ -270,44 +234,6 @@ footer p {
   font-weight: bold;
   cursor: pointer;
 }
-#product-list {
-  width: 100vw;
-  display: grid;
-  grid-template-columns: repeat(6, max-content);
-  gap: 10px;
-  justify-content: center; /* Center the cards horizontally */
-  align-items: center; /* Center the cards vertically */
-}
-
-.product-item {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.product-image {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.product-name {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.product-price {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.product-description {
-  font-size: 14px;
-  line-height: 1.4;
-}
 
 
 /* Form styles for Update */
@@ -377,4 +303,68 @@ footer p {
   margin-top: 15px;
   margin-left: auto;
   margin-right: 0;
+}
+
+
+
+
+
+/* Product list container */
+#product-list {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Product item container */
+.product-item {
+  flex-basis: calc(25% - 20px);
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Product image */
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Product name */
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Product price */
+.product-price {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Product description */
+.product-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Delete button */
+.delete-button {
+  padding: 8px 12px;
+  background-color: #ff4136;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-button:hover {
+  background-color: #dc322f;
 }

@@ -23,4 +23,5 @@ public interface ProductService {
 	public Category deleteCategory(Integer catId ) throws ProductException;
 	
 	public Category addCategory(Category category) throws ProductException;
+	Product findProductByProductName(String productName) throws ProductException;
 }
