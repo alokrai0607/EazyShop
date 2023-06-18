@@ -57,6 +57,7 @@ public class AppConfig {
 			auth
 				.requestMatchers(HttpMethod.POST,"/customerSave").permitAll()
 				.requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
+				.requestMatchers(HttpMethod.GET, "/products").permitAll()
 				.requestMatchers(HttpMethod.GET, "/customers").hasRole("ADMIN")
 				.requestMatchers(HttpMethod.GET, "/customerGet/**").hasAnyRole("ADMIN","USER")
 				.anyRequest().authenticated();
