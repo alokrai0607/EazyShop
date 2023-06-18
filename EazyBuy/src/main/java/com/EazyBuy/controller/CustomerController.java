@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.EazyBuy.model.Address;
 import com.EazyBuy.model.Customer;
 import com.EazyBuy.service.CustomerService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -70,7 +73,14 @@ public class CustomerController {
 		List<Customer> customers = customerService.getAllCustomer();
 		return new ResponseEntity<>(customers, HttpStatus.OK);
 	}
-	
+	 @GetMapping("/logout")
+	    public String logout(HttpServletRequest request, HttpServletResponse response) {
+	        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        if (auth != null) {
+	            new SecurityContextLogoutHandler().logout(request, response, auth);
+	        }
+	        return "logut successully";
+	    }
 	@GetMapping("/signIn")
 	public ResponseEntity<String> getLoggedInCustomerDetailsHandler(Authentication auth){
 		
@@ -78,7 +88,7 @@ public class CustomerController {
 		
 		 Customer customer= customerService.getCustomerDetailsByEmail(auth.getName());
 		 
-		 return new ResponseEntity<>(customer.getFirstName()+"Logged In Successfully", HttpStatus.ACCEPTED);	
+		 return new ResponseEntity<>(customer.getFirstName()+" Logged In Successfully", HttpStatus.ACCEPTED);	
 	}
 
 

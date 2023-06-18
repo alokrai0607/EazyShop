@@ -10,7 +10,6 @@ function getProducts() {
         }
       })
       .then(data => {
-        console.log(data);
         displayProducts(data);
       })
       .catch(error => {

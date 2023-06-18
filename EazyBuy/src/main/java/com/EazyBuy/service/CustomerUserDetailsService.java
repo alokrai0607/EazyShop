@@ -27,11 +27,12 @@ public class CustomerUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		
+		System.out.println("reached here");
 		Optional<Customer> opt= customerRepository.findByEmail(username);
+		System.out.println("reached after finding");
 
 		if(opt.isPresent()) {
-			
+			System.out.println("reacahed also here");
 			Customer customer= opt.get();
 			
 			List<GrantedAuthority> authorities= new ArrayList<>();	

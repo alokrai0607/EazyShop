@@ -113,6 +113,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (3,3);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,7 +222,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'admin@gmail.com','admin','image.jpg',_binary '','Doe','1234567890','password123','admin',NULL);
+INSERT INTO `customer` VALUES (1,'admin@gmail.com','admin','image.jpg',_binary '','Doe','1234567890','password123','admin',NULL),(2,'alok@gmail.com','alok','image.png',_binary '','rai','1234567890','1234','ROLE_ADMIN',NULL),(3,'alok1@gmail.com','alokrai','alok.png',_binary '','rai','1234567890','$2a$10$TQBgRtPhFWHBdlwnwK0yVutOqIYrGEHlhPTfK8UmOSZGj2YXPT/CC','ROLE_ADMIN',3);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +244,7 @@ CREATE TABLE `customer_seq` (
 
 LOCK TABLES `customer_seq` WRITE;
 /*!40000 ALTER TABLE `customer_seq` DISABLE KEYS */;
-INSERT INTO `customer_seq` VALUES (51);
+INSERT INTO `customer_seq` VALUES (101);
 /*!40000 ALTER TABLE `customer_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,7 +326,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`product_id`),
   KEY `FK5yhiu7ri51c4oigkb28skv0b2` (`cat_id`),
   CONSTRAINT `FK5yhiu7ri51c4oigkb28skv0b2` FOREIGN KEY (`cat_id`) REFERENCES `category` (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +335,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'A electronic device','sss','samsung',78965,'mobile',45,2),(2,'A electronic device','sss','Nova',850,'Treamer',50,2),(3,'A grocery item','https://media.istockphoto.com/id/1371245517/photo/granulated-white-sugar-in-wooden-bowl-isolated-on-white-background-with-clipping-path.jpg?s=2048x2048&w=is&k=20&c=xhsZ08CMm_hp6tjtCkThdHnystlTC34t-FfHHcQoDko=','Krishana',40,'Sugar',50,1),(4,'A Cloth item','https://cdn.pixabay.com/photo/2017/01/13/04/56/t-shirt-1976334_640.png','Peter-England',40,'T-Shirt',100,3),(5,'A Footware item','https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_640.png','The shrishmabho',25000,'Shoes',200,4),(6,'A stationary item','https://cdn.pixabay.com/photo/2019/04/28/15/13/pen-4163403_640.jpg','Parker',350,'Pen',300,5);
+INSERT INTO `product` VALUES (1,'2 min snacks','https://media.istockphoto.com/id/900051384/photo/pasta-vs-rice.jpg?s=1024x1024&w=is&k=20&c=54Fxfwc4-aDnwZKNYQpK_t8uFfh4oR41PeQywJNQXS0=','nestle',12345,'maggie',123,2),(2,'Cannon DSLR','https://cdn.pixabay.com/photo/2014/11/22/00/51/camera-541213_640.jpg','Cannon',20000,'Canon DSLR',1,2),(3,'A grocery item','https://media.istockphoto.com/id/1371245517/photo/granulated-white-sugar-in-wooden-bowl-isolated-on-white-background-with-clipping-path.jpg?s=2048x2048&w=is&k=20&c=xhsZ08CMm_hp6tjtCkThdHnystlTC34t-FfHHcQoDko=','Krishana',40,'Sugar',50,1),(4,'A Cloth item','https://cdn.pixabay.com/photo/2017/01/13/04/56/t-shirt-1976334_640.png','Peter-England',40,'T-Shirt',100,3),(5,'A Footware item','https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_640.png','The shrishmabho',25000,'Shoes',200,4),(6,'A stationary item','https://cdn.pixabay.com/photo/2019/04/28/15/13/pen-4163403_640.jpg','Parker',350,'Pen',300,5),(7,'coldrink hai','https://media.istockphoto.com/id/1334503632/photo/bottles-with-soda-or-cola-in-the-red-strage-crate-for-bottles.jpg?s=1024x1024&w=is&k=20&c=NdboF91QvHgkX5vfMcjquNqYJTtGm9VH4nrlUHHB1Ho=','pepsico',50,'Pepsi',5,1),(8,'Watch','https://cdn.pixabay.com/photo/2017/02/01/18/32/pocket-watch-2031021_640.jpg','Casio',200,'Watch',1,2),(9,'i phone','https://cdn.pixabay.com/photo/2018/05/01/13/04/miniature-3365503_1280.jpg','apple',100000,'i-Phone',4,2);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,4 +375,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-18 18:39:19
+-- Dump completed on 2023-06-19  0:47:55

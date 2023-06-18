@@ -66,7 +66,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
     
     }
 	
-//this make sure that this filter will execute only for first time when client call the api /signIn at first time
+
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
 	

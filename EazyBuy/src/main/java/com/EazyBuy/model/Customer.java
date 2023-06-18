@@ -47,10 +47,7 @@ public class Customer {
 	
 	private String image;
 
-//	@NotNull
-//	@Pattern(regexp = "[6789][0-9]{9}")
-//	@NotBlank
-//	@Column(unique = true,nullable = false)
+
 	@NotNull
 	@Size(min=10,max=10,message="mobile number should be 10 digit")
 	private String mobileNumber;
@@ -70,9 +67,9 @@ public class Customer {
 //	@JsonIgnore
 	private boolean isActive = true;
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "aid")
-	@JsonIgnore
 	private Address address;
 
 	@JsonIgnore
@@ -83,7 +80,7 @@ public class Customer {
 	
 	
 
-//	@JsonIgnore
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<Orders> orders;
 	

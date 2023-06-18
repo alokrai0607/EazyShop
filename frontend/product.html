@@ -5,6 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <style>
+      body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h2 {
+  color: #333;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 100px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+.success-message {
+  color: green;
+  margin-top: 5px;
+}
+
+    </style>
 </head>
 <body>
     <nav>
@@ -12,13 +77,81 @@
           <a class="logo" href="index.html">E-commerce Store</a>
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">Products</a></li>
+            <li><a href="product.html">Products</a></li>
             <li><a href="cart.html">cart</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">Sign In</a></li>
+            <li><a href="signIn.html">Sign In</a></li>
           </ul>
         </div>
       </nav>
+
+      <h2>Add Product</h2>
+      <form id="productForm">
+        <label for="productName">Product Name:</label><br>
+        <input type="text" id="productName" name="productName" required><br><br>
+        
+        <label for="image">Image URL:</label><br>
+        <input type="text" id="image" name="image" required><br><br>
+        
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" required><br><br>
+        
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br><br>
+        
+        <label for="manufacturer">Manufacturer:</label><br>
+        <input type="text" id="manufacturer" name="manufacturer" required><br><br>
+        
+        <label for="quantity">Quantity:</label><br>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+        
+        <label for="category">Category:</label><br>
+        <select id="category" name="category" required>
+          <option value="1">GROCERY</option>
+          <option value="2">ELECTRONICS</option>
+          <option value="3">CLOTH</option>
+          <option value="4">FOOTWEAR</option>
+          <option value="5">STATIONARY</option>
+        </select><br><br>
+        
+        <input type="submit" value="Add Product">
+      </form>
+
+     <h2>Update Product</h2>
+      <form id="putProductForm" class="put-product-form">
+        <label for="putProductId">Product ID:</label>
+        <input type="number" id="putProductId" name="putProductId" required><br>
+      
+        <label for="putProductName">Product Name:</label>
+        <input type="text" id="putProductName" name="putProductName" required><br>
+      
+        <label for="putImage">Image URL:</label>
+        <input type="text" id="putImage" name="putImage" required><br>
+      
+        <label for="putPrice">Price:</label>
+        <input type="number" id="putPrice" name="putPrice" required><br>
+      
+        <label for="putDescription">Description:</label>
+        <textarea id="putDescription" name="putDescription" required></textarea><br>
+      
+        <label for="putManufacturer">Manufacturer:</label>
+        <input type="text" id="putManufacturer" name="putManufacturer" required><br>
+      
+        <label for="putQuantity">Quantity:</label>
+        <input type="number" id="putQuantity" name="putQuantity" required><br>
+      
+        <label for="putCatName">Category:</label>
+        <select id="putCatName" name="putCatName" required>
+          <option value="1">GROCERY</option>
+          <option value="2">ELECTRONICS</option>
+          <option value="3">CLOTH</option>
+          <option value="4">FOOTWEAR</option>
+          <option value="5">STATIONARY</option>
+        </select><br>
+      
+        <button type="submit">Add Product</button>
+      </form>
+      
       <section id="product-list">
         <!-- Product items will be appended here -->
       </section>
@@ -26,3 +159,135 @@
       <script src="product.js"></script>
 </body>
 </html>
+
+ 
+ <script>
+  function handleFormSubmission(event) {
+    event.preventDefault(); // Prevent the form from actually submitting
+
+    // Retrieve the form values
+    const productName = document.getElementById('productName').value;
+    const image = document.getElementById('image').value;
+    const price = document.getElementById('price').value;
+    const description = document.getElementById('description').value;
+    const manufacturer = document.getElementById('manufacturer').value;
+    const quantity = document.getElementById('quantity').value;
+    const categorySelect = document.getElementById('category');
+    const categoryId = categorySelect.value;
+    const categoryName = categorySelect.options[categorySelect.selectedIndex].text;
+
+    // Create the product object
+    const product = {
+      productId: 0,
+      productName: productName,
+      image: image,
+      price: parseFloat(price),
+      description: description,
+      manufacturer: manufacturer,
+      quantity: parseInt(quantity),
+      category: {
+        catId: parseInt(categoryId),
+        catName: categoryName
+      }
+    };
+    // Log the product object (you can modify this to perform further processing or send it to the server)
+    addProductToDatabase(product);
+  }
+
+  // Attach the event listener to the form's submit event
+  const form = document.getElementById('productForm');
+  form.addEventListener('submit', handleFormSubmission);
+
+
+
+
+  function addProductToDatabase(product) {
+  fetch('http:localhost:8080/products', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(product)
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log('Product added successfully!');
+    } else {
+      console.error('Failed to add product:', response.statusText);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+var token = localStorage.getItem('authkey');
+
+
+function getPutFormData() {  
+  var productId = document.getElementById("putProductId").value;
+  var productName = document.getElementById("putProductName").value;
+  var image = document.getElementById("putImage").value;
+  var price = document.getElementById("putPrice").value;
+  var description = document.getElementById("putDescription").value;
+  var manufacturer = document.getElementById("putManufacturer").value;
+  var quantity = document.getElementById("putQuantity").value;
+  const categorySelect = document.getElementById('putCatName');
+    const categoryId = categorySelect.value;
+    const categoryName = categorySelect.options[categorySelect.selectedIndex].text;
+  
+  var formData = {
+    productId: productId,
+    productName: productName,
+    image: image,
+    price: price,
+    description: description,
+    manufacturer: manufacturer,
+    quantity: quantity,
+    category: {
+      catId: categoryId,
+      catName: categoryName
+    }
+  };
+  console.log(formData);
+  putDataInDatabase(formData, token);
+}
+
+
+function putDataInDatabase(formData, token) {
+  var apiEndpoint = 'http://localhost:8080/products'; // Replace with your API endpoint
+  var requestOptions = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify(formData)
+  };
+
+  fetch(apiEndpoint, requestOptions)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+        console.log("put ok");
+      } else {
+        throw new Error('Error: ' + response.status + ' ' + response.statusText);
+      }
+    })
+    .then(data => {
+      console.log('Data successfully updated:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error.message);
+    });
+}
+
+
+const putform = document.getElementById('putProductForm');
+putform.addEventListener('submit', (e) => {
+  e.preventDefault();
+  getPutFormData();
+});
+
+
+</script>

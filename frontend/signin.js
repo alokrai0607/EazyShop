@@ -13,36 +13,41 @@ function getSignInFormValues() {
 document.getElementById("signin-form").addEventListener("submit", function(event) {
   event.preventDefault(); 
   var formData = getSignInFormValues();
-sendSignInRequest(formData);
+  signIn(formData.userId, formData.password);
 
 
 });
 
-function sendSignInRequest(formData) {
-  var apiEndpoint = 'http://localhost:8080/login';
+function signIn(username, password) {
+  var apiEndpoint = 'http://localhost:8080/signIn';
+  var authHeader = 'Basic ' + btoa(username + ':' + password);
   var requestOptions = {
-    method: 'POST',
+    method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
+      'Authorization': authHeader
+    }
   };
 
   fetch(apiEndpoint, requestOptions)
     .then(response => {
       if (response.ok) {
+        const authHeader = response.headers.get('Authorization');
+        localStorage.setItem("authkey", authHeader);
         return response.json();
       } else {
         throw new Error('Error: ' + response.status + ' ' + response.statusText);
       }
     })
     .then(data => {
-      localStorage.setItem('uuid', data.uuid);
+      return data;
     })
     .catch(error => {
       console.error('Error:', error.message);
     });
 }
+
+
+
 
 
 
