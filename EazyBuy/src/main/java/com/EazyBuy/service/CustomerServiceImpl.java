@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.EazyBuy.exception.AlreadyExistedException;
+import com.EazyBuy.exception.Customer1Exception;
 import com.EazyBuy.exception.InputInvalidException;
 import com.EazyBuy.exception.UserException;
 import com.EazyBuy.model.Address;
@@ -16,6 +17,8 @@ import com.EazyBuy.model.Customer;
 import com.EazyBuy.repository.CartRepository;
 import com.EazyBuy.repository.CustomerRepo;
 import com.EazyBuy.repository.UserSession;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -29,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
 	private UserSession userRepo;
 
 	@Override
+	@Transactional
 	public Customer saveCustomer(Customer customer) {
 
 //		Customer customer2 = customerRepo.findCustomerByMobileNumber(customer.getMobileNumber());
@@ -128,6 +132,24 @@ public class CustomerServiceImpl implements CustomerService {
 		customer3.setAddress(null);
 
 		return customerRepo.save(customer3);
+	}
+	
+	@Override
+	public Customer getCustomerDetailsByEmail(String email)throws Customer1Exception {
+		
+		return customerRepo.findByEmail(email).orElseThrow(() -> new Customer1Exception("Customer Not found with Email: "+email));
+	}
+
+	@Override
+	public List<Customer> getAllCustomerDetails()throws Customer1Exception {
+		
+		List<Customer> customers= customerRepo.findAll();
+		
+		if(customers.isEmpty())
+			throw new Customer1Exception("No Customer find");
+		
+		return customers;
+		
 	}
 
 }
