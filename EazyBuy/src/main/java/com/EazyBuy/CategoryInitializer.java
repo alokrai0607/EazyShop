@@ -19,8 +19,8 @@ public class CategoryInitializer {
 	@EventListener(ApplicationReadyEvent.class)
 	public void initializeCategories() {
 	    for (CategoryEnum categoryEnum : CategoryEnum.values()) {
-	        Category existingCategory = categoryRepository.findByCatName(categoryEnum);
-	        if (existingCategory == null) {
+	        Category extCategory = categoryRepository.findByCatName(categoryEnum);
+	        if (extCategory == null) {
 	            Category category = new Category();
 	            category.setCatName(categoryEnum);
 	            categoryRepository.save(category);
