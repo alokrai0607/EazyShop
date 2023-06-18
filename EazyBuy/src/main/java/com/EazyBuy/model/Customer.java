@@ -36,20 +36,23 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer customerId;
-	@Size(min = 3, max = 15)
-	@NotBlank
+	
+	
+	@NotBlank(message="first name should not be  blank")
 	private String firstName;
-	@Size(min = 3, max = 15)
-	@NotBlank
+
+
 	private String lastName;
 	
 	
 	private String image;
 
+//	@NotNull
+//	@Pattern(regexp = "[6789][0-9]{9}")
+//	@NotBlank
+//	@Column(unique = true,nullable = false)
 	@NotNull
-	@Pattern(regexp = "[6789][0-9]{9}")
-	@NotBlank
-	@Column(unique = true,nullable = false)
+	@Size(min=10,max=10,message="mobile number should be 10 digit")
 	private String mobileNumber;
 
 	@NotBlank
@@ -57,17 +60,19 @@ public class Customer {
 	@Column(unique = true,nullable = false)
 	private String email;
 
-	@NotNull
-	@NotBlank
-	@Size(min = 5, max = 10, message = "password length should be between 5 to 10")
+//	@NotNull
+//	@NotBlank
+//	@Size(min = 5, max = 10, message = "password length should be between 5 to 10")
 	private String password;
 
-	@NotNull
-	@JsonIgnore
+	private String role;
+//	@NotNull
+//	@JsonIgnore
 	private boolean isActive = true;
 
 	@OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "aid")
+	@JsonIgnore
 	private Address address;
 
 	@JsonIgnore
@@ -76,10 +81,10 @@ public class Customer {
 	private Cart cart;
 
 	
+	
 
 //	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<Orders> orders;
-
 	
 }

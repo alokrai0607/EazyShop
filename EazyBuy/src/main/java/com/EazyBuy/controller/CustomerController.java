@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,12 +28,20 @@ import jakarta.validation.Valid;
 public class CustomerController {
 	@Autowired
 	CustomerService customerService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@PostMapping("/customerSave")
 	public ResponseEntity<Customer> saveCustmerHandller(@Valid @RequestBody Customer customer) {
 		Address address = customer.getAddress();
 		Customer customer3 = customer;
 		customer3.setAddress(address);
+		
+		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+		customer.setRole("ROLE_"+customer.getRole().toUpperCase());
+		
+		
 		Customer customer2 = customerService.saveCustomer(customer3);
 		return new ResponseEntity<>(customer2, HttpStatus.ACCEPTED);
 	}
@@ -60,5 +70,16 @@ public class CustomerController {
 		List<Customer> customers = customerService.getAllCustomer();
 		return new ResponseEntity<>(customers, HttpStatus.OK);
 	}
+	
+	@GetMapping("/signIn")
+	public ResponseEntity<String> getLoggedInCustomerDetailsHandler(Authentication auth){
+		
+		System.out.println(auth); // this Authentication object having Principle object details
+		
+		 Customer customer= customerService.getCustomerDetailsByEmail(auth.getName());
+		 
+		 return new ResponseEntity<>(customer.getFirstName()+"Logged In Successfully", HttpStatus.ACCEPTED);	
+	}
+
 
 }
