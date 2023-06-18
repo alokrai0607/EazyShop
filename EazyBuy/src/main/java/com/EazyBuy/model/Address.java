@@ -36,9 +36,9 @@ public class Address {
 	private String pincode;
 	
 	
-	@OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
 	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@PrimaryKeyJoinColumn
 	private Customer customer;
 	
 }

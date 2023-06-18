@@ -33,7 +33,7 @@ public class CustomerController {
 	private PasswordEncoder passwordEncoder;
 
 	@PostMapping("/customerSave")
-	public ResponseEntity<Customer> saveCustmerHandller(@Valid @RequestBody Customer customer) {
+	public ResponseEntity<Customer> saveCustmerHandller( @RequestBody Customer customer) {
 		Address address = customer.getAddress();
 		Customer customer3 = customer;
 		customer3.setAddress(address);

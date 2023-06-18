@@ -87,4 +87,5 @@ public class Customer {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<Orders> orders;
 	
+	
 }
