@@ -1,4 +1,4 @@
-<h1 align="center">ShopKaro</h1>
+<h1 align="center">EazyBuy</h1>
 <img src="https://cdn.pixabay.com/photo/2018/03/06/08/59/online-3202912_640.jpg" alt="" style="width: 80%; height:350px; margin: 0 auto; border: 2px solid darkred;">
 
 This is an EaszyBuy Shopping Application developed for ABC Company. The application is designed to allow customers to browse, purchase, and view their order details, and to allow admins to manage the products in the store.
