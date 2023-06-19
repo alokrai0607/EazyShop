@@ -14,7 +14,7 @@ document.getElementById("signin-form").addEventListener("submit", function(event
   event.preventDefault(); 
   var formData = getSignInFormValues();
   signIn(formData.userId, formData.password);
-
+  window.location.href = 'index.html';
 
 });
 
@@ -40,6 +40,7 @@ function signIn(username, password) {
     })
     .then(data => {
       return data;
+     
     })
     .catch(error => {
       console.error('Error:', error.message);

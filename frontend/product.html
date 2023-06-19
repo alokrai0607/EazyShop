@@ -104,18 +104,18 @@ input[type="submit"]:hover {
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-          <a class="logo" href="index.html">E-commerce Store</a>
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="product.html">Products</a></li>
-            <li><a href="cart.html">cart</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="signIn.html">Sign In</a></li>
-          </ul>
-        </div>
-      </nav>
+  <nav>
+    <div class="container">
+      <a class="logo" href="#">EazyBuy Store</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="Signup.html">Signup</a></li>
+        <li><a href="signIn.html">Sign In</a></li>
+      </ul>
+    </div>
+  </nav>
       
 
       <div class="form-container">
@@ -185,7 +185,7 @@ input[type="submit"]:hover {
           <option value="5">STATIONARY</option>
         </select><br>
       
-        <button type="submit">Add Product</button>
+        <button type="submit">Update Product</button>
       </form>
         </div>
       </div>
@@ -254,7 +254,7 @@ input[type="submit"]:hover {
   })
   .then(response => {
     if (response.ok) {
-      console.log('Product added successfully!');
+      window.alert('Product added successfully!');
     } else {
       console.error('Failed to add product:', response.statusText);
     }
@@ -318,7 +318,7 @@ function putDataInDatabase(formData, token) {
       }
     })
     .then(data => {
-      console.log('Data successfully updated:', data);
+      window.alert('Data successfully updated:', data);
     })
     .catch(error => {
       console.error('Error:', error.message);

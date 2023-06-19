@@ -20,7 +20,7 @@ function getProducts() {
   
   function displayProducts(products) {
     var productList = document.getElementById('product-list');
-    productList.innerHTML=null;
+    productList.innerHTML = null;
   
     products.forEach((product, index) => {
       var productItem = document.createElement('div');
@@ -37,6 +37,11 @@ function getProducts() {
       productName.textContent = product.productName;
       productName.classList.add('product-name');
       productItem.appendChild(productName);
+  
+      var productId = document.createElement('p'); // Create a new paragraph element for the product ID
+      productId.textContent = 'Product ID: ' + product.productId; // Set the text content to display the product ID
+      productId.classList.add('product-id'); // Add a CSS class for styling if needed
+      productItem.appendChild(productId); // Append the product ID to the product item
   
       var productPrice = document.createElement('p');
       productPrice.textContent = 'Price: Rs.' + product.price;
@@ -60,6 +65,7 @@ function getProducts() {
       productList.appendChild(productItem);
     });
   }
+  
   function deleteProduct(productId, token) {
 
     fetch('http://localhost:8080/products/' + productId, {
