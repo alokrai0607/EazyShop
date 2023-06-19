@@ -1,38 +1,44 @@
 <h1 align="center">EazyBuy</h1>
-<img src="https://cdn.pixabay.com/photo/2018/03/06/08/59/online-3202912_640.jpg" alt="" style="width: 80%; height:350px; margin: 0 auto; border: 2px solid darkred;">
+<p align="center">
+  <img src="https://cdn.pixabay.com/photo/2018/03/06/08/59/online-3202912_640.jpg" alt="" style="width: 80%; height: 350px; border: 2px solid darkred;">
+</p>
+
 
 This is an EaszyBuy Shopping Application developed for ABC Company. The application is designed to allow customers to browse, purchase, and view their order details, and to allow admins to manage the products in the store.
 
-The application consists of several modules including Login, Customer, Product, Order, and Cart modules. The Login module allows users to register, log in and log out of the application. The Customer module enables customers to add products to their cart and place orders. The Product module enables admins to search, add, remove, and update products.
+The application consists of several modules including Login, Customer, Product, Order, and Cart modules. The Login module allows users to register, login and log out of the application. The Customer module enables customers to add products to their cart and place orders. The Product module enables admins to search, add, remove, and update products.
 
 The application is built using Spring Boot and follows the Model-View-Controller (MVC) architecture. It uses a relational database to store and retrieve data.
 
 <h1>Class Design</h1>
-The application uses POJO classes to represent the entities in the system. The classes include Customer, Admin, Product, Order, and Cart. The service layer is designed using interfaces, such as CustomerService and AdminService, to provide separation between the business logic and the controller layer.
+The application uses POJO classes to represent the entities in system. The classes include Customer, Admin, Product, Order, and Cart. The service layer is designed using interfaces, such as CustomerService and AdminService, to provide separation between the business logic and the controller layer.
 
 Overall, this Online Shopping Application is a simple and easy-to-use platform that allows customers to shop online and admins to manage the products in the store.
 
 # ER DIAGRAM
+![ER](https://github.com/alokrai0607/remarkable-border-1662/assets/71522419/ae444ce5-9a55-477b-909b-a9022f90b232)
 
 
-
-<br/>
-
+# Collaborators  <br/>
+1. Alok Rai.<br/>
+2. Dipak Mahaseth.<br/>
+3. Anshuman Singh.<br/>
+4. Diksha Gaupale.<br/>
+5. Shrishambho Khade.<br/>
 
 # Tech Stack
  # Backend
   
-  1. Java Core
+  1. Java
   2. MySql
   3. Maven
   4. SpringBoot
-  
+  5. SpringSecurity
  # Frontend
 
   1. HTML
   2. CSS
-  3. BOOTSTRAP
-  4. JAVASCRIPT
+  3. JavaScript
 # Features:-
   
   # Customer Module
@@ -76,3 +82,4 @@ Overall, this Online Shopping Application is a simple and easy-to-use platform t
   
     1. Secure user authentication and authorization
     2. Password reset functionality
+ 

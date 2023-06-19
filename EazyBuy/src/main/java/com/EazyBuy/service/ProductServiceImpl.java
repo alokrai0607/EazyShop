@@ -178,5 +178,18 @@ public class ProductServiceImpl implements ProductService{
 		return cat.get();
 	}
 
+
+
+
+
+	 @Override
+	    public Product findProductByProductName(String productName) throws ProductException {
+	        Product product = proRepo.findProductByProductName(productName);
+	        if (product == null) {
+	            throw new ProductException("Product not found for productName: " + productName);
+	        }
+	        return product;
+	 }
+
 	
 }

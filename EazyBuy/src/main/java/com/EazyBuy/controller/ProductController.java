@@ -20,7 +20,6 @@ import com.EazyBuy.model.Product;
 import com.EazyBuy.service.ProductService;
 
 @RestController
-@CrossOrigin(origins = "*")
 public class ProductController {
 
 	@Autowired
@@ -30,6 +29,15 @@ public class ProductController {
 	public ResponseEntity<List<Product>> getAllProducts() {
 
 		return new ResponseEntity<>(ps.viewAllProduct(), HttpStatus.OK);
+	}
+
+	@GetMapping("/productByName{productName}")
+	public ResponseEntity<Product> getProductByProductName(@PathVariable String productName) {
+		Product product = ps.findProductByProductName(productName);
+		if (product == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return new ResponseEntity<>(product, HttpStatus.OK);
 	}
 
 	@GetMapping("/products/{id}")
@@ -51,22 +59,19 @@ public class ProductController {
 	}
 
 	@DeleteMapping("/products/{id}")
-	public ResponseEntity<Product> deleteProductById(@PathVariable("id") Integer id
-			) {
+	public ResponseEntity<Product> deleteProductById(@PathVariable("id") Integer id) {
 
 		return new ResponseEntity<>(ps.deleteProductById(id), HttpStatus.OK);
 	}
 
 	@PostMapping("/category")
-	public ResponseEntity<Category> addCategory(@RequestBody Category category
-			) {
+	public ResponseEntity<Category> addCategory(@RequestBody Category category) {
 
 		return new ResponseEntity<>(ps.addCategory(category), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/category/{id}")
-	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id
-		) {
+	public ResponseEntity<Category> deleteCategoryById(@PathVariable("id") Integer id) {
 
 		return new ResponseEntity<>(ps.deleteCategory(id), HttpStatus.OK);
 	}

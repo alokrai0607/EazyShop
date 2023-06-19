@@ -14,7 +14,6 @@ import com.EazyBuy.model.User;
 import com.EazyBuy.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "*")
 public class UserController {
 	@Autowired
 	private UserService service;
