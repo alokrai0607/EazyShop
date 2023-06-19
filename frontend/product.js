@@ -37,7 +37,7 @@ function getProducts() {
       productItem.appendChild(productName);
   
       var productPrice = document.createElement('p');
-      productPrice.textContent = 'Price: $' + product.price;
+      productPrice.textContent = 'Price: Rs.' + product.price;
       productPrice.classList.add('product-price');
       productItem.appendChild(productPrice);
   
