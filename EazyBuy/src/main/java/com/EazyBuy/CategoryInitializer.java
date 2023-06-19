@@ -9,7 +9,7 @@ import com.EazyBuy.model.Category;
 import com.EazyBuy.model.CategoryEnum;
 import com.EazyBuy.repository.CategoryRepository;
 
-@Component
+//@Component
 public class CategoryInitializer {
 
 	@Autowired
@@ -29,3 +29,5 @@ public class CategoryInitializer {
 	}
 
 }
+
+//gfor git
