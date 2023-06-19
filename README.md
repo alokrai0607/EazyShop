@@ -13,7 +13,7 @@ The application uses POJO classes to represent the entities in the system. The c
 Overall, this Online Shopping Application is a simple and easy-to-use platform that allows customers to shop online and admins to manage the products in the store.
 
 # ER DIAGRAM
-
+<img src="https://drive.google.com/file/d/14o3_5Yb9W3B7doFBYT80_16R0GmWlJo-/view?usp=sharing" alt="" style="width: 80%; height:350px; margin: 0 auto; border: 2px solid darkred;">
 
 
 <br/>
@@ -76,3 +76,4 @@ Overall, this Online Shopping Application is a simple and easy-to-use platform t
   
     1. Secure user authentication and authorization
     2. Password reset functionality
+ 
