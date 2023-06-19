@@ -18,7 +18,7 @@ Overall, this Online Shopping Application is a simple and easy-to-use platform t
 # ER DIAGRAM
 ![ER](https://github.com/alokrai0607/remarkable-border-1662/assets/71522419/ae444ce5-9a55-477b-909b-a9022f90b232)
 
-<br/>
+
 # Collaborators  <br/>
 1. Alok Rai.<br/>
 2. Dipak Mahaseth.<br/>
