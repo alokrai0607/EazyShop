@@ -16,7 +16,12 @@ Overall, this Online Shopping Application is a simple and easy-to-use platform t
 <img width="730" alt="Screenshot 2023-03-30 123019" src="https://drive.google.com/uc?id=14o3_5Yb9W3B7doFBYT80_16R0GmWlJo-">
 
 <br/>
-
+#**Collaborators**
+1. Alok Rai.
+2. Dipak Mahaseth.
+3. Anshuman Singh.
+4. Diksha Gaupale.
+5. Shrishambho Khade.
 
 # Tech Stack
  # Backend
