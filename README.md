@@ -22,7 +22,14 @@ Overall, this Online Shopping Application is a simple and easy-to-use platform t
 3. Anshuman Singh.<br/>
 4. Diksha Gaupale.<br/>
 5. Shrishambho Khade.<br/>
-
+# Tech Stack
+ # Backend
+  
+  1. Java
+  2. MySql
+  3. Maven
+  4. SpringBoot
+  5. SpringSecurity
 # Tech Stack
  # Backend
   
