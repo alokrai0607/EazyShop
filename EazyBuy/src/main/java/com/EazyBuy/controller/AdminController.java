@@ -1,5 +1,6 @@
 package com.EazyBuy.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.EazyBuy.exception.OrderException;
 import com.EazyBuy.model.Category;
+import com.EazyBuy.model.Orders;
 import com.EazyBuy.model.Product;
 import com.EazyBuy.service.AdminService;
 import com.EazyBuy.service.CategoryService;
+import com.EazyBuy.service.OrderService;
 import com.EazyBuy.service.ProductService;
 
 @RestController
@@ -33,6 +37,11 @@ public class AdminController {
     
     @Autowired
     private CategoryService catService;
+    
+	@Autowired
+	private OrderService orService;
+	
+	
     
     @GetMapping("admin/products")
 	public ResponseEntity<List<Product>> getAllProducts(){
@@ -96,4 +105,34 @@ public class AdminController {
 		
 		return new ResponseEntity<>(proService.deleteCategory(id),HttpStatus.OK);
 	}
+	
+	@GetMapping("ordersDate/{date}")
+	public ResponseEntity<List<Orders>> gelAllOrderByDateController(@PathVariable("date") LocalDate date)
+			throws OrderException {
+
+		List<Orders> allOrByDate = orService.AllOrderByDate(date);
+
+		return new ResponseEntity<List<Orders>>(allOrByDate, HttpStatus.OK);
+
+	}
+
+	@GetMapping("ordersCity/{city}")
+	public ResponseEntity<List<Orders>> gelAllOrderByCityController(@PathVariable("city") String city)
+			throws OrderException {
+
+		List<Orders> allOrByCitye = orService.AllOrderByLocation(city);
+
+		return new ResponseEntity<List<Orders>>(allOrByCitye, HttpStatus.OK);
+
+	}
+	
+	@GetMapping("/orders")
+	public ResponseEntity<List<Orders>> allOrderController() throws OrderException {
+
+		List<Orders> allOr = orService.AllOrder();
+
+		return new ResponseEntity<List<Orders>>(allOr, HttpStatus.OK);
+	}
+	
+	
 }
