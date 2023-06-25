@@ -67,22 +67,8 @@ public class Customer {
 //	@JsonIgnore
 	private boolean isActive = true;
 
-	@JsonIgnore
-	@OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name = "aid")
-	private Address address;
-
-	@JsonIgnore
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "CAID")
-	private Cart cart;
-
 	
 	
-
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
-	private List<Orders> orders;
 	
 	
 }

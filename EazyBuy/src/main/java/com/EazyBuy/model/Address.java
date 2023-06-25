@@ -9,6 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.AllArgsConstructor;
@@ -36,8 +37,8 @@ public class Address {
 	private String pincode;
 	
 	
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	//@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn
 	private Customer customer;
 	

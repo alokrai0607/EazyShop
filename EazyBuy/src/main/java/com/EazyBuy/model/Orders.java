@@ -31,11 +31,11 @@ public class Orders {
 	
 	@Embedded
 	@ElementCollection
-	List<ProductDTO> productList= new ArrayList<>();
+	List<Product> productList= new ArrayList<>();
 	
 	
 	@ManyToOne
-	@JsonIgnore
+	
 	@JoinColumn(name = "CID")
 	private Customer customer;
 	

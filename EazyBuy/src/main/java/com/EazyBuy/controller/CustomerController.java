@@ -62,14 +62,12 @@ public class CustomerController {
 
 	@PostMapping("/customerSave")
 	public ResponseEntity<Customer> saveCustmerHandller(@RequestBody Customer customer) {
-		Address address = customer.getAddress();
-		Customer customer3 = customer;
-		customer3.setAddress(address);
+		
 
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 		customer.setRole("ROLE_" + customer.getRole().toUpperCase());
 
-		Customer customer2 = customerService.saveCustomer(customer3);
+		Customer customer2 = customerService.saveCustomer(customer);
 		return new ResponseEntity<>(customer2, HttpStatus.ACCEPTED);
 	}
 
