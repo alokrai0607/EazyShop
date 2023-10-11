@@ -1,20 +1,32 @@
 package com.EazyBuy.service;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import com.EazyBuy.exception.CartException;
 import com.EazyBuy.exception.OrderException;
-import com.EazyBuy.model.Orders;
+import com.EazyBuy.model.Order;
+import com.EazyBuy.model.User;
+import com.EazyBuy.request.CreateOrderRequest;
 
 public interface OrderService {
+		
+public Order createOrder(User user, CreateOrderRequest orderRequest);
 	
-	public Orders addOrder(Integer customerId) throws OrderException,CartException;
-	public Orders updateOrder(Orders order) throws OrderException;
-	public String removeOrder(Integer orderId) throws OrderException;
-	public Orders viewOrderById(Integer orderId) throws OrderException;
-	public List<Orders> AllOrder() throws OrderException;
-	public List<Orders> AllOrderByDate(LocalDate date) throws OrderException;
-	public List<Orders> AllOrderByLocation(String location) throws OrderException;
+	public Order findOrderById(Long orderId) throws OrderException;
+	
+	public List<Order> usersOrderHistory(Long userId);
+	
+	public Order placedOrder(Long orderId) throws OrderException;
+	
+	public Order confirmedOrder(Long orderId)throws OrderException;
+	
+	public Order shippedOrder(Long orderId) throws OrderException;
+	
+	public Order deliveredOrder(Long orderId) throws OrderException;
+	
+	public Order cancledOrder(Long orderId) throws OrderException;
+	
+	public List<Order>getAllOrders();
+	
+	public void deleteOrder(Long orderId) throws OrderException;
 	
 }

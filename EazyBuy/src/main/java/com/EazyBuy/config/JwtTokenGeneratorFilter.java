@@ -1,6 +1,7 @@
 package com.EazyBuy.config;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -20,57 +21,37 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
+public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
-		
-	
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (null != authentication) {
-        	
-        	
-        	
-        	
-            SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes());
-            
-            
-            
-            String jwt = Jwts.builder()
-            		.setIssuer("Ram")
-            		.setSubject("JWT Token")
+            SecretKey key = Keys.hmacShaKeyFor(SecurityConstants.JWT_KEY.getBytes(StandardCharsets.UTF_8));
+            String jwt = Jwts.builder().setIssuer("Eazy Bank").setSubject("JWT Token")
                     .claim("username", authentication.getName())
                     .claim("authorities", populateAuthorities(authentication.getAuthorities()))
                     .setIssuedAt(new Date())
-                    .setExpiration(new Date(new Date().getTime()+ 30000000)) // millisecond expiration time of around 8 hours
+                    .setExpiration(new Date((new Date()).getTime() + 30000000))
                     .signWith(key).compact();
-                       
             response.setHeader(SecurityConstants.JWT_HEADER, jwt);
- 
         }
 
-        filterChain.doFilter(request, response);	
-	}
-	
+        filterChain.doFilter(request, response);
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        return !request.getServletPath().equals("/auth/signin");
+    }
+
     private String populateAuthorities(Collection<? extends GrantedAuthority> collection) {
-        
-    	Set<String> authoritiesSet = new HashSet<>();
-        
+        Set<String> authoritiesSet = new HashSet<>();
         for (GrantedAuthority authority : collection) {
             authoritiesSet.add(authority.getAuthority());
         }
         return String.join(",", authoritiesSet);
-   
-    
     }
-	
 
-	@Override
-	protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-	
-        return !request.getServletPath().equals("/signIn");	
-	}
-	
 }

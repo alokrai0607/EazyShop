@@ -1,44 +1,59 @@
 package com.EazyBuy.model;
 
-import java.util.HashSet;
-import java.util.Set;
+
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "orders")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cart {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
+    @Column(name="order_id")
+    private String orderId;
+  
+    @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "cart_items")
-    private Set<CartItem> cartItems = new HashSet<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
-    @Column(name = "total_price")
-    private double totalPrice;
+    private LocalDateTime orderDate;
+
+    private LocalDateTime deliveryDate;
     
-    @Column(name="total_item")
+    private OrderStatus orderStatus;
+    private double totalPrice;
+
+    @OneToOne
+    private Address shippingAddress;
+
+    
     private int totalItem;
+    
+    private LocalDateTime createdAt;
+
     
 }
