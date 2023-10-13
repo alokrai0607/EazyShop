@@ -34,10 +34,12 @@ public class ProjectSecurityConfig {
 				.addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
 				.addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
 				.authorizeHttpRequests((requests) -> requests
-						.requestMatchers("/endpoint").hasRole("ADMIN") // add endpoint only accesible to admin
-						.requestMatchers("/endpoint").hasAnyRole("USER", "ADMIN") // add endpoint accessible to admin and user both
-						.requestMatchers("auth/signin").authenticated()
-						.requestMatchers("auth/signup","/swagger-ui*/**", "/v3/api-docs/**")
+						.requestMatchers("/admin/products/**", "/admin/orders/**", "/admin/control/**").hasRole("ADMIN")
+						.requestMatchers("/cart/**", "/users/**", "cart_items/**", "/orders/**", 
+								"/ratings/**")
+						.hasAnyRole("USER", "ADMIN").requestMatchers("/all").hasAnyRole("USER", "ADMIN")
+						.requestMatchers("/auth/signin").authenticated()
+						.requestMatchers("/products/**", "/", "/auth/signup", "/swagger-ui*/**", "/v3/api-docs/**")
 						.permitAll())
 				.formLogin(Customizer.withDefaults()).httpBasic(Customizer.withDefaults());
 		return http.build();

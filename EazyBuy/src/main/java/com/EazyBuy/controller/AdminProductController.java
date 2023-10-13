@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,10 +30,16 @@ public class AdminProductController {
 	}
 	@PostMapping("/")
 	public ResponseEntity<Product> createProductHandler(@RequestBody CreateProductRequest req) throws ProductException, SQLException{
+		System.out.println("reached product controller");
 		Product createdProduct = productService.createProduct(req);
 		
 		return new ResponseEntity<Product>(createdProduct,HttpStatus.ACCEPTED);
 		
+	}
+	
+	@GetMapping("/hello")
+	public String getHello() {
+		return "hello what are you doing?";
 	}
 	
 	@DeleteMapping("/{productId}/delete")

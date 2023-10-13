@@ -3,7 +3,7 @@ package com.EazyBuy.model;
 
 public class Size {
 
-	private String name;
+	private String name;   
 	private int quantity;
 	
 	public String getName() {

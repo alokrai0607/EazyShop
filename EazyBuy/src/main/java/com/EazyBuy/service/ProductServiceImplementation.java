@@ -35,10 +35,14 @@ public class ProductServiceImplementation implements ProductService {
 
 	@Override
 	public Product createProduct(CreateProductRequest req) throws ProductException, SQLException {
+		System.out.println("reached here");
 		Category category = categoryRepository.findByName(req.getCategory());
 		if (category == null) {
 			Category newCategory = new Category();
+			newCategory.setName(req.getCategory());
+			System.out.println("category is getting created");
 			category = categoryRepository.save(newCategory);
+			System.out.println("category created");
 		}
 		Product product = new Product();
 		product.setTitle(req.getTitle());
@@ -53,6 +57,7 @@ public class ProductServiceImplementation implements ProductService {
 		product.setCategory(category);
 
 		Product savedProduct = productRepository.save(product);
+		System.out.println("/saved product");
 
 		return savedProduct;
 	}

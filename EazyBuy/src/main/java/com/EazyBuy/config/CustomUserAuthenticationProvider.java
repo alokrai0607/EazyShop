@@ -17,12 +17,11 @@ import org.springframework.stereotype.Component;
 import com.EazyBuy.model.User;
 import com.EazyBuy.repository.UserRepository;
 
-
 @Component
 public class CustomUserAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository customerRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -31,7 +30,7 @@ public class CustomUserAuthenticationProvider implements AuthenticationProvider 
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        User customer = userRepository.findByEmail(username);
+        User customer = customerRepository.findByEmail(username);
         if (customer != null) {
             if (passwordEncoder.matches(pwd, customer.getPassword())) {
             	List<GrantedAuthority> auth = new ArrayList<>();
